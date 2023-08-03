@@ -1,0 +1,4 @@
+gym~=0.21.0
+pyglet~=1.5.27
+numpy~=1.25.1
+matplotlib~=3.7.2

@@ -3,7 +3,6 @@ import gym
 import torch
 import random
 import numpy as np
-from nose.tools import nottest
 
 from src.dqn_learning_v0.DQNAgent import DQNAgent
 from src.dqn_learning_v0.DQNParameters import DQNParameters
@@ -39,14 +38,13 @@ def train_model():
     env.close()
 
 
-@nottest
-def test_model(model_id, n_episode, verbose):
+def _test_model(model_id, n_episode, verbose):
     env = gym.envs.make("CartPole-v0")
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
 
     epsilon = Epsilon()
-    dqn_param = DQNParameters(action_size, n_hidden=40)
+    dqn_param = DQNParameters(action_size, n_hidden=50)
     agent = DQNAgent(state_size, action_size, dqn_param)
     agent.load_model(model_id, dqn_param.data_path)
     scores = []
@@ -87,14 +85,15 @@ def test_model(model_id, n_episode, verbose):
     if not solved:
         print("Test phase: last 100 average score: {}".format(average100_score))
 
-    print_scores(scores, avg_scores, avg100_scores, model_id)
+    print_scores(scores, avg_scores, average100_score, model_id)
     env.close()
 
 
 if __name__ == "__main__":
+    random.seed(0)
     test = True
     if not test:
         train_model()
     else:
-        model_id = "40_0.001_25_35"
-        test_model(model_id, 100, True)
+        model_id = "50_0.001_25_35"
+        _test_model(model_id, 100, True)

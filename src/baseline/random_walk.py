@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 seed = 0
 np.random.seed(seed)
 
-env = gym.make('CartPole-v1')
+env = gym.make('CartPole-v0')
 env.seed(seed)
 
 num_episodes = 600

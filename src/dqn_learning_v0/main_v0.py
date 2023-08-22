@@ -85,13 +85,13 @@ def _test_model(model_id, n_episode, verbose):
     if not solved:
         print("Test phase: last 100 average score: {}".format(average100_score))
 
-    print_scores(scores, avg_scores, average100_score, model_id)
+    print_scores(scores, avg_scores, avg100_scores, model_id)
     env.close()
 
 
 if __name__ == "__main__":
     random.seed(0)
-    test = True
+    test = False
     if not test:
         train_model()
     else:

@@ -43,7 +43,7 @@ def select_learning_rate(x):
     return max(min_learning_rate, min(1.0, 1.0 - math.log10((x + 1) / 25)))
 
 
-env = gym.make("CartPole-v1")
+env = gym.make("CartPole-v0")
 
 no_buckets = (1, 1, 6, 3)
 no_actions = env.action_space.n
@@ -67,7 +67,7 @@ min_explore_rate = 0.1
 min_learning_rate = 0.1
 max_episodes = 1000
 max_time_steps = 250
-streak_to_end = 120
+streak_to_end = 100
 solved_time = 199
 discount = 0.99
 no_streaks = 0
@@ -77,6 +77,8 @@ learning_rate_per_episode = []
 time_per_episode = []
 avgtime_per_episode = []
 
+# Training
+random.seed(1)
 total_time = 0
 for episode_no in range(max_episodes):
     explore_rate = select_explore_rate(episode_no)
@@ -135,6 +137,34 @@ for episode_no in range(max_episodes):
     time_per_episode.append(time_step)
     total_time += time_step
     avgtime_per_episode.append(total_time / (episode_no + 1))
+
+# Testing
+scores = []
+avg_scores = []
+for episode in range(streak_to_end):
+    # Reset the environment while starting a new episode
+    state = env.reset()
+    done = False
+    time_step = 0
+    total_reward = 0
+
+    while not done:
+        # Choose an action based on the Q-value table
+        state_value = bucketize_state_values(state)
+
+        action = np.argmax(q_value_table[state_value])
+
+        next_state, reward, done, _ = env.step(action)
+        total_reward += reward
+        state = next_state
+
+        if done:
+            scores.append(total_reward)
+            avg_scores = np.mean(scores)
+
+        env.render()  # Display the environment
+
+    print("episode: {}, score: {}, average score: {}".format(episode, total_reward, avg_scores))
 
 env.close()
 

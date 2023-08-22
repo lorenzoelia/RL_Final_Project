@@ -43,7 +43,12 @@ def select_learning_rate(x):
     return max(min_learning_rate, min(1.0, 1.0 - math.log10((x + 1) / 25)))
 
 
-env = gym.make("CartPole-v0")
+# Set seed for reproducibility
+seed = 0
+np.random.seed(seed)
+
+env = gym.make('CartPole-v0')
+env.seed(seed)
 
 no_buckets = (1, 1, 6, 3)
 no_actions = env.action_space.n

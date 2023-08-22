@@ -11,7 +11,10 @@ from src.dqn_learning_v0.QNetwork import train_network, print_scores
 
 
 def train_model():
-    env = gym.envs.make("CartPole-v0")
+    seed = 0
+    np.random.seed(seed)
+    env = gym.make('CartPole-v0')
+    env.seed(seed)
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
     n_episode = 600
@@ -39,7 +42,10 @@ def train_model():
 
 
 def _test_model(model_id, n_episode, verbose):
-    env = gym.envs.make("CartPole-v0")
+    seed = 0
+    np.random.seed(seed)
+    env = gym.make('CartPole-v0')
+    env.seed(seed)
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
 
@@ -90,8 +96,7 @@ def _test_model(model_id, n_episode, verbose):
 
 
 if __name__ == "__main__":
-    random.seed(0)
-    test = False
+    test = True
     if not test:
         train_model()
     else:

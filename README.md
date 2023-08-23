@@ -43,6 +43,6 @@ python main.py
   package containing all Python code. Inside there are:
     - Package [`baseline`](https://github.com/lorenzoelia/RL_Final_Project/tree/master/src/baseline),
       which contains the baseline approach of random walk used for comparing Q-Learning and Double DQN effectiveness
-    - Package [`dqn_learning_v0`](https://github.com/lorenzoelia/RL_Final_Project/tree/master/src/dqn_learning_v0), which contains the classes necessary to train the DQN with Double Q-Learning. Folder [`models_v0`] contains the trained DQN agents' weight
+    - Package [`dqn_learning_v0`](https://github.com/lorenzoelia/RL_Final_Project/tree/master/src/dqn_learning_v0), which contains the classes necessary to train the DQN with Double Q-Learning. Folder [`models_v0`](https://github.com/lorenzoelia/RL_Final_Project/tree/master/src/dqn_learning_v0/models_v0) contains the trained DQN agents' weight
     - Package [`pole_test`](https://github.com/lorenzoelia/RL_Final_Project/tree/master/src/pole_test), to test the execution of the CartPole environment from Gym
     - Package [`q_learning`](https://github.com/lorenzoelia/RL_Final_Project/tree/master/src/q_learning), which contains the files for plain q-learning and testing

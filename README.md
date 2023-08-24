@@ -9,7 +9,7 @@ Application of Q-Learning and Double DQN to the CartPole problem. Final project 
 To clone this repository, you need to have `git` installed. After that you can open a terminal window and run
 
 ```
-git clone https://github.com/lorenzoelia/RL_Final_Project
+git clone https://github.com/lorenzoelia/balancing_a_pole_with_the_deepmind
 ```
 
 Move to the project folder

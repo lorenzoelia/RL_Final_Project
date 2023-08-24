@@ -1,8 +1,8 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-# RL_Final_Project
+# Balancing a pole with the deep(mind)
 
-Final project on application of double dqn learning to the cart-pole problem, for the Reinforcement Learning course.
+Application of Q-Learning and Double DQN to the CartPole problem. Final project for the course of Reinforcement Learning in MSc Robotics&AI Engineering @ University of Trieste, Dept. of Engineering and Architecture, Trieste.
 
 ## Setup
 

@@ -15,7 +15,7 @@ git clone https://github.com/lorenzoelia/balancing_a_pole_with_the_deepmind
 Move to the project folder
 
 ```
-cd RL_Final_Project
+cd balancing_a_pole_with_the_deepmind
 ```
 
 Now you need to install the dependencies. Make sure you have `pip` installed and then run

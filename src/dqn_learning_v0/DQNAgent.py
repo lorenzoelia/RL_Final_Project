@@ -66,17 +66,6 @@ class DQNAgent():
                 td_targets.append(q_values)
             self.update(states, td_targets)
 
-    def soft_copy_target(self, pa_tau=0.1):
-        model_params = self.model.named_parameters()
-        target_params = self.model_target.named_parameters()
-        dict_target_params = dict(target_params)
-        for name1, param1 in model_params:
-            if name1 in dict_target_params:
-                dict_target_params[name1].data.copy_(
-                    pa_tau * param1.data + (1 - pa_tau) * dict_target_params[name1].data)
-
-        self.model_target.load_state_dict(dict_target_params)
-
     def copy_target(self):
         self.model_target.load_state_dict((self.model.state_dict()))
 

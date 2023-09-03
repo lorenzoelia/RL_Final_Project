@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from src.dqn_learning_v0.Epsilon import Epsilon
 
 
-def train_network(env, agent, n_episode, epsilon, dqn_parameters, train_id, verbose=False, render=False, polyak_avg=False):
+def train_network(env, agent, n_episode, epsilon, dqn_parameters, train_id, verbose=False, render=False):
     """
     Deep Q_Learning training algorithm using double DQN, with experience replay
     :param env: Gym environment
@@ -24,9 +24,7 @@ def train_network(env, agent, n_episode, epsilon, dqn_parameters, train_id, verb
     for episode in range(n_episode):
         total_reward_episode = 0
 
-        if polyak_avg:
-            agent.soft_copy_target(0.1)
-        elif episode % dqn_parameters.target_update == 0:
+        if episode % dqn_parameters.target_update == 0:
             agent.copy_target()
 
         policy = agent.gen_epsilon_greedy_policy(epsilon.value, dqn_parameters.action_size)
